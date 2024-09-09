@@ -1525,6 +1525,8 @@ class LlmExporter(torch.nn.Module):
         if not self.skip_slim:
             self.onnx_slim(onnx_model)
         if export_mnn:
+            # export weight to llm.onnx.data
+            self.onnx_load_param(onnx_model)
             # convert onnx to mnn and quant weight
             MNNConveter(onnx_model, self.unloaded_ops, self).export()
         else:
