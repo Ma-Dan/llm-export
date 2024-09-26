@@ -451,7 +451,7 @@ class MNNConveter:
         return mnn_path
 
     def export(self, quant_bit = None, quant_block = None):
-        if self.weight_ops is None:
+        if True: #self.weight_ops is None:
             if quant_bit is None:
                 quant_bit = self.quant_bit
             if quant_block is None:
